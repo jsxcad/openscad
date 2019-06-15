@@ -35,16 +35,22 @@ extern void register_builtin_csgops();
 extern void register_builtin_transform();
 extern void register_builtin_color();
 extern void register_builtin_primitives();
+#ifdef QQ
 extern void register_builtin_surface();
+#endif // QQ
 extern void register_builtin_control();
 extern void register_builtin_render();
+#ifdef QQ
 extern void register_builtin_import();
+#endif // QQ
 extern void register_builtin_projection();
 extern void register_builtin_cgaladv();
 extern void register_builtin_offset();
 extern void register_builtin_dxf_linear_extrude();
 extern void register_builtin_dxf_rotate_extrude();
+#ifdef QQ
 extern void register_builtin_text();
+#endif // QQ
 extern void initialize_builtin_dxf_dim();
 
 /*!
@@ -61,16 +67,22 @@ void Builtins::initialize()
 	register_builtin_transform();
 	register_builtin_color();
 	register_builtin_primitives();
+#ifdef QQ
 	register_builtin_surface();
+#endif // QQ
 	register_builtin_control();
 	register_builtin_render();
+#ifdef QQ
 	register_builtin_import();
+#endif // QQ
 	register_builtin_projection();
 	register_builtin_cgaladv();
 	register_builtin_offset();
 	register_builtin_dxf_linear_extrude();
 	register_builtin_dxf_rotate_extrude();
+#ifdef QQ
 	register_builtin_text();
+#endif // QQ
 
 	this->deprecations.emplace("dxf_linear_extrude", "linear_extrude()");
 	this->deprecations.emplace("dxf_rotate_extrude", "rotate_extrude()");

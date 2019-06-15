@@ -37,7 +37,9 @@
 #include <boost/filesystem.hpp>
 #include "boost-utils.h"
 namespace fs = boost::filesystem;
+#if QQ
 #include "FontCache.h"
+#endif
 #include <sys/stat.h>
 
 FileModule::FileModule(const std::string &path, const std::string &filename)
@@ -58,6 +60,7 @@ void FileModule::registerUse(const std::string path)
 {
 	auto ext = fs::path(path).extension().generic_string();
 	
+#if QQ
 	if (boost::iequals(ext, ".otf") || boost::iequals(ext, ".ttf")) {
 		if (fs::is_regular(path)) {
 			FontCache::instance()->register_font_file(path);
@@ -67,6 +70,9 @@ void FileModule::registerUse(const std::string path)
 	} else {
 		usedlibs.insert(path);
 	}
+#else // QQ
+	usedlibs.insert(path);
+#endif // QQ
 }
 
 void FileModule::registerInclude(const std::string &localpath, const std::string &fullpath)
